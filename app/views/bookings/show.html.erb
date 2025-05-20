@@ -1,0 +1,59 @@
+<!-- app/views/bookings/confirm.html.erb -->
+
+<div style="display: flex; flex-direction: column; font-family: Arial, sans-serif; max-width: 1000px; margin: auto; padding: 20px;">
+  <h2>Request to book</h2>
+
+  <!-- RARE FIND Banner -->
+  <div style="background-color: #e0e0e0; padding: 10px; border-radius: 5px; font-weight: bold;">
+    This is a rare find
+    <p style="font-weight: normal;">John's car is usually booked</p>
+  </div>
+
+  <!-- Car Details -->
+  <div style="margin-top: 20px;">
+    <h3>Your Car</h3>
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+      <div>
+        <strong>Dates</strong><br>
+        20–25 May
+      </div>
+      <div>
+        <a href="#" style="text-decoration: underline;">Edit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment -->
+  <div style="margin-top: 20px;">
+    <h3>Choose how to pay</h3>
+    <input type="button" value="Pay $534.25 now" style="width: 100%; padding: 10px; background-color: #e0e0e0; border: none; margin-top: 10px; cursor: pointer;">
+  </div>
+
+  <!-- Phone login -->
+  <div style="margin-top: 30px; border-top: 1px solid #ccc; padding-top: 20px;">
+    <h3>Log in or sign up to book</h3>
+
+    <div style="margin-bottom: 10px;">
+      <label for="country">Country/region</label><br>
+      <select id="country" name="country" style="width: 100%; padding: 8px;">
+        <option value="UK">United Kingdom (+44)</option>
+        <!-- Add other countries as needed -->
+      </select>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <label for="phone">Phone number</label><br>
+      <input type="text" id="phone" name="phone" placeholder="Phone number" style="width: 100%; padding: 8px;">
+    </div>
+
+    <small>
+      We’ll call or text you to confirm your number. Standard message and data rates apply.
+      <a href="#">Privacy Policy</a>
+    </small>
+
+    <br><br>
+    <button style="width: 100%; padding: 12px; background-color: black; color: white; border: none; cursor: pointer;">
+      Continue
+    </button>
+  </div>
+</div>
