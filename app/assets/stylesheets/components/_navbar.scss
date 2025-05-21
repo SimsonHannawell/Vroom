@@ -1,12 +1,50 @@
-.navbar-lewagon {
+
+.navbar {
+  display: flex;
   justify-content: space-between;
-  background: white;
-}
+  align-items: flex-start;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  .logo-and-search {
+    display: flex;
+    align-items: center;
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+    .logo {
+      width: 60px;
+      height: auto;
+      margin-right: 20px;
+    }
+
+    .search-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 150px;
+      }
+    }
+  }
+
+  .top-buttons {
+    display: flex;
+    gap: 10px;
+
+    button {
+      padding: 10px 15px;
+      background-color: #e6e6e6;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #d4d4d4;
+      }
+    }
+  }
 }
