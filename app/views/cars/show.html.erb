@@ -1,0 +1,23 @@
+<div class="navbar">
+  <%= image_tag "logo.png" %>
+  <div>
+    <%= link_to "Home", cars_path %>
+    <%= link_to "My Bookings", bookings_path %>
+  </div>
+</div>
+
+<div class="car-header">
+  <h1><%= @car.make %> <%= @car.model %> | <%= @car.year %></h1>
+</div>
+
+<div class="car-details">
+  <p><strong>Transmission:</strong> <%= @car.transmission %></p>
+  <p><strong>Fuel Type:</strong> <%= @car.fuel %></p>
+  <p><strong>Year:</strong> <%= @car.year %></p>
+</div>
+
+<div class="car-actions">
+  <%= link_to "Share", "#", class: "btn-share" %>
+  <%= link_to "Home", "#", class: "btn-share" %>
+  <%= link_to "Back", "#", class: "btn-share" %>
+</div>
