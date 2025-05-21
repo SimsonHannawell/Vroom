@@ -1,59 +1,100 @@
 <!-- app/views/bookings/confirm.html.erb -->
+<div class="booking-page">
+  <div class="booking-content">
+    <!-- Left Section -->
+    <div class="booking-details">
+      <%= image_tag "logo.png", alt: "Logo", class: "logo" %>
 
-<div style="display: flex; flex-direction: column; font-family: Arial, sans-serif; max-width: 1000px; margin: auto; padding: 20px;">
-  <h2>Request to book</h2>
+      <h1>Confirm and pay</h1>
 
-  <!-- RARE FIND Banner -->
-  <div style="background-color: #e0e0e0; padding: 10px; border-radius: 5px; font-weight: bold;">
-    This is a rare find
-    <p style="font-weight: normal;">John's car is usually booked</p>
-  </div>
-
-  <!-- Car Details -->
-  <div style="margin-top: 20px;">
-    <h3>Your Car</h3>
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-      <div>
-        <strong>Dates</strong><br>
-        20–25 May
+      <div class="highlight-box">
+        <strong>This is a rare find.</strong>
+        <p>John’s car is usually booked.</p>
       </div>
-      <div>
-        <a href="#" style="text-decoration: underline;">Edit</a>
+
+      <div class="section">
+        <h2>Your trip</h2>
+        <div class="info-row">
+          <div>
+            <p class="label">Dates</p>
+            <p>20–25 May</p>
+          </div>
+          <%= link_to "Edit", "#", class: "edit-link" %>
+        </div>
+        <div class="info-row">
+          <div>
+            <p class="label">Guests</p>
+            <p>1 driver</p>
+          </div>
+          <%= link_to "Edit", "#", class: "edit-link" %>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Choose how to pay</h2>
+        <div class="payment-option selected">
+          <input type="radio" checked>
+          <div>
+            <p>Pay $534.25 now</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Log in or sign up to book</h2>
+
+        <div class="form-group">
+          <label for="country">Country/region</label>
+          <select id="country" name="country">
+            <option value="UK">United Kingdom (+44)</option>
+            <!-- Add others -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone number</label>
+          <input type="text" id="phone" name="phone" placeholder="Phone number">
+        </div>
+
+        <small>
+          We'll call or text you to confirm your number. Standard message and data rates apply.
+          <%= link_to "Privacy Policy", "#" %>
+        </small>
+
+        <button class="continue-button">Continue</button>
       </div>
     </div>
-  </div>
 
-  <!-- Payment -->
-  <div style="margin-top: 20px;">
-    <h3>Choose how to pay</h3>
-    <input type="button" value="Pay $534.25 now" style="width: 100%; padding: 10px; background-color: #e0e0e0; border: none; margin-top: 10px; cursor: pointer;">
-  </div>
+    <!-- Right Section -->
+    <div class="car-summary">
+      <div class="car-image">
+        <!-- Replace with actual car image -->
+        <%= image_tag "car.jpg", alt: "Car photo" %>
+      </div>
+      <div class="car-info">
+        <h3>Tesla Model 3</h3>
+        <p>Electric Sedan</p>
+        <p>⭐ 4.9 (120 reviews)</p>
+      </div>
 
-  <!-- Phone login -->
-  <div style="margin-top: 30px; border-top: 1px solid #ccc; padding-top: 20px;">
-    <h3>Log in or sign up to book</h3>
-
-    <div style="margin-bottom: 10px;">
-      <label for="country">Country/region</label><br>
-      <select id="country" name="country" style="width: 100%; padding: 8px;">
-        <option value="UK">United Kingdom (+44)</option>
-        <!-- Add other countries as needed -->
-      </select>
+      <div class="price-breakdown">
+        <div class="price-row">
+          <span>$85 x 5 days</span>
+          <span>$425.00</span>
+        </div>
+        <div class="price-row">
+          <span>Cleaning fee</span>
+          <span>$25.00</span>
+        </div>
+        <div class="price-row">
+          <span>Service fee</span>
+          <span>$84.25</span>
+        </div>
+        <div class="price-row total">
+          <span>Total</span>
+          <span>$534.25</span>
+        </div>
+      </div>
     </div>
-
-    <div style="margin-bottom: 10px;">
-      <label for="phone">Phone number</label><br>
-      <input type="text" id="phone" name="phone" placeholder="Phone number" style="width: 100%; padding: 8px;">
-    </div>
-
-    <small>
-      We’ll call or text you to confirm your number. Standard message and data rates apply.
-      <a href="#">Privacy Policy</a>
-    </small>
-
-    <br><br>
-    <button style="width: 100%; padding: 12px; background-color: black; color: white; border: none; cursor: pointer;">
-      Continue
-    </button>
   </div>
 </div>
