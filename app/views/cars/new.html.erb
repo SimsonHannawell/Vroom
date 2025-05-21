@@ -1,0 +1,72 @@
+<!-- <h1>List Your Car for Lending</h1>
+
+<%= simple_form_for @car do |f| %>
+  <%= f.input :make %>
+  <%= f.input :model %>
+  <%= f.input :year, hint: "e.g. 2021" %>
+
+  <%= f.input :fuel_type, collection: ['Petrol', 'Diesel', 'Electric', 'Hybrid'], prompt: 'Select fuel type' %>
+  <%= f.input :transmission, collection: ['Automatic', 'Manual'], prompt: 'Select transmission type' %>
+
+  <%= f.input :color %>
+  <%= f.input :price_per_day, label: "Price per Day (£)" %>
+  <%= f.input :description, as: :text %>
+  <%= f.button :submit, "List Car" %>
+<% end %>
+-->
+
+<%= simple_form_for @car, html: { class: 'container mt-5' } do |f| %>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Form Heading -->
+      <div class="text-center mb-4">
+        <h2 class="text-danger">List Your Car for Lending</h2>
+      </div>
+
+      <!-- Make Field -->
+      <div class="form-group">
+        <%= f.input :make, label: "Car Make", input_html: { class: "form-control", placeholder: "Enter car make" } %>
+      </div>
+
+      <!-- Model Field -->
+      <div class="form-group">
+        <%= f.input :model, label: "Car Model", input_html: { class: "form-control", placeholder: "Enter car model" } %>
+      </div>
+
+      <!-- Year Field -->
+      <div class="form-group">
+        <%= f.input :year, label: "Car Year", hint: "e.g. 2021", input_html: { class: "form-control", placeholder: "Enter car year" } %>
+      </div>
+
+      <!-- Fuel Type Field -->
+      <div class="form-group">
+        <%= f.input :fuel_type, label: "Fuel Type", collection: ['Petrol', 'Diesel', 'Electric', 'Hybrid'], prompt: 'Select fuel type', input_html: { class: "form-control" } %>
+      </div>
+
+      <!-- Transmission Field -->
+      <div class="form-group">
+        <%= f.input :transmission, label: "Transmission", collection: ['Automatic', 'Manual'], prompt: 'Select transmission type', input_html: { class: "form-control" } %>
+      </div>
+
+      <!-- Color Field -->
+      <div class="form-group">
+        <%= f.input :color, label: "Car Color", input_html: { class: "form-control", placeholder: "Enter car color" } %>
+      </div>
+
+      <!-- Price per Day Field -->
+      <div class="form-group">
+        <%= f.input :price_per_day, label: "Price per Day (£)", input_html: { class: "form-control", placeholder: "Enter price per day" } %>
+      </div>
+
+      <!-- Description Field -->
+      <div class="form-group">
+        <%= f.input :description, label: "Description", as: :text, input_html: { class: "form-control", placeholder: "Provide a detailed description of the car" } %>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group text-center">
+        <%= f.button :submit, "List Car", class: "btn btn-danger btn-lg" %>
+      </div>
+    </div>
+  </div>
+<% end %>
