@@ -3,6 +3,8 @@ class Car < ApplicationRecord
   has_many :bookings
   has_many :reviews
 
+
+
   validates :make, presence: true
   validates :model, presence: true
   validates :transmission, inclusion: { in: ['Manual', 'Auto']}
