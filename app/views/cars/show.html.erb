@@ -6,7 +6,9 @@
 <!-- Navbar -->
 <div class="navbar d-flex justify-content-between align-items-center px-3 py-2 border-bottom bg-white">
   <div class="logo-and-search d-flex align-items-center gap-3">
-    <%= image_tag "vroom logo.jpg", class: "logo" %>
+    <%= link_to root_path do %>
+  <%= image_tag "vroom logo.jpg", class: "logo" %>
+    <% end %>
 
     <div class="search-bar d-flex gap-2">
       <input type="text" class="form-control" placeholder="Where">
@@ -40,6 +42,18 @@
   <h1><%= @car.make %> <%= @car.model %> | <%= @car.year %></h1>
 </div>
 
+<div class="car-gallery">
+  <div class="main-image">
+    <%= image_tag "pagani.jpg", alt: "Main Car Image" %>
+  </div>
+  <div class="thumbnail-grid">
+    <%= image_tag "pagani.jpg", alt: "Interior" %>
+    <%= image_tag "pagani.jpg", alt: "Side View" %>
+    <%= image_tag "pagani.jpg", alt: "Rear View" %>
+    <%= image_tag "pagani.jpg", alt: "Dashboard" %>
+  </div>
+</div>
+
 <div class="car-details">
   <p><strong>Transmission:</strong> <%= @car.transmission %></p>
   <p><strong>Fuel Type:</strong> <%= @car.fuel_type %></p>
@@ -50,4 +64,5 @@
   <%= link_to "Share", "#", class: "btn-share" %>
   <%= link_to "Home", "#", class: "btn-share" %>
   <%= link_to "Back", "#", class: "btn-share" %>
+<%= link_to "Book Now", booking_path, class: "btn-share" %>
 </div>

@@ -1,23 +1,22 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
   get '/my_bookings', to: 'bookings#my_bookings'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Nest bookings under cars for only :new and :create
   resources :cars do
-    resources :bookings, only:[:create, :new]
+    resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, except:[:create, :new] do
-    resources :reviews, only:[:create, :new]
+  # All other actions (index, show, edit, update, destroy)
+  resources :bookings, except: [:new, :create] do
+    resources :reviews, only: [:new, :create]
   end
 
-  resources :cars
-
+  post "/bookings/:id/accept", to: "bookings#accept", as: :accept_booking
+  post "/bookings/:id/decline", to: "bookings#decline", as: :decline_booking
 end
+

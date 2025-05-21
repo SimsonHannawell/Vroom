@@ -12,7 +12,10 @@ class BookingsController < ApplicationController
 
   end
 
-
+  def index
+    @incoming_bookings = current_user.bookings.incoming  # scope or however you define incoming
+    @pending_bookings = current_user.bookings.pending    # scope or however you define pending
+  end
 
   def destroy
     @booking = Booking.find(params[:id])
