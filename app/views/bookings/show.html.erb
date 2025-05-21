@@ -1,0 +1,105 @@
+<!-- app/views/bookings/confirm.html.erb -->
+<div class="booking-page">
+  <div class="booking-content">
+    <!-- Left Section -->
+    <div class="booking-details">
+      <!-- Back button -->
+      <div class="back-button">
+        <%= link_to "← Back", "#", class: "back-link" %>
+      </div>
+
+      <%= image_tag "logo.png", alt: "Logo", class: "logo" %>
+
+      <h1>Confirm and pay</h1>
+
+      <div class="highlight-box">
+        <strong>This is a rare find.</strong>
+        <p>John’s car is usually booked.</p>
+      </div>
+
+      <div class="section">
+        <h2>Your trip</h2>
+        <div class="info-row">
+          <div>
+            <p class="label">Dates</p>
+            <p>20–25 May</p>
+          </div>
+          <%= link_to "Edit", "#", class: "edit-link" %>
+        </div>
+        <div class="info-row">
+          <div>
+            <p class="label">Guests</p>
+            <p>1 driver</p>
+          </div>
+          <%= link_to "Edit", "#", class: "edit-link" %>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Choose how to pay</h2>
+        <div class="payment-option selected">
+          <input type="radio" checked>
+          <div>
+            <p>Pay $534.25 now</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Log in or sign up to book</h2>
+
+        <div class="form-group">
+          <label for="country">Country/region</label>
+          <select id="country" name="country">
+            <option value="UK">United Kingdom (+44)</option>
+            <!-- Add others -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone number</label>
+          <input type="text" id="phone" name="phone" placeholder="Phone number">
+        </div>
+
+        <small>
+          We'll call or text you to confirm your number. Standard message and data rates apply.
+          <%= link_to "Privacy Policy", "#" %>
+        </small>
+
+        <button class="continue-button">Continue</button>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="car-summary">
+      <div class="car-image">
+        <!-- Replace with actual car image -->
+        <%= image_tag "car.jpg", alt: "Car photo" %>
+      </div>
+      <div class="car-info">
+        <h3>Tesla Model 3</h3>
+        <p>Electric Sedan</p>
+        <p>⭐ 4.9 (120 reviews)</p>
+      </div>
+
+      <div class="price-breakdown">
+        <div class="price-row">
+          <span>$85 x 5 days</span>
+          <span>$425.00</span>
+        </div>
+        <div class="price-row">
+          <span>Cleaning fee</span>
+          <span>$25.00</span>
+        </div>
+        <div class="price-row">
+          <span>Service fee</span>
+          <span>$84.25</span>
+        </div>
+        <div class="price-row total">
+          <span>Total</span>
+          <span>$534.25</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

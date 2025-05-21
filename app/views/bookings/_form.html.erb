@@ -1,0 +1,7 @@
+<%= simple_form_for @project do |f| %>
+  ...
+  <%= f.input :opening_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+  ...
+<% end %>
