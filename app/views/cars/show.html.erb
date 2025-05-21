@@ -1,0 +1,15 @@
+<div class="car-header">
+  <h1><%= @car.make %> <%= @car.model %> | <%= @car.year %></h1>
+</div>
+
+<div class="car-details">
+  <p><strong>Transmission:</strong> <%= @car.transmission %></p>
+  <p><strong>Fuel Type:</strong> <%= @car.fuel %></p>
+  <p><strong>Year:</strong> <%= @car.year %></p>
+</div>
+
+<div class="car-actions">
+  <%= link_to "Share", "#", class: "btn-share" %>
+  <%# <%= link_to "Save", save_car_path(@car), method: :post, class: "btn-save" %> %>
+  <%= link_to "Book Now", new_car_booking_path(@car), class: "btn-book" %>
+</div>
