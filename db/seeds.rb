@@ -1,3 +1,6 @@
+
+
+
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -8,10 +11,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-puts "clearing databse"
+puts "Clearing database..."
+
 Car.destroy_all
 User.destroy_all
-puts "creating new users"
+
+puts "Creating new users..."
 
 bob = User.create!(
   email: "bob@gmail.com",
@@ -22,6 +27,7 @@ alice = User.create!(
   email: "alice@gmail.com",
   password: "password456"
 )
+
 chris = User.create!(
   email: "chris@gmail.com",
   password: "password789"
@@ -62,9 +68,12 @@ james = User.create!(
   email: "james@gmail.com",
   password: "password789"
 )
-puts "created #{User.count} users"
-#cars
-puts "creating new cars"
+
+
+puts "Created #{User.count} users"
+
+puts "Creating new cars..."
+
 Car.create!(
   make: "BMW",
   model: "X5",
@@ -72,6 +81,7 @@ Car.create!(
   fuel: "Diesel",
   transmission: "Auto",
   user: bob
+  image_url: "bmw car.jpg"
 )
 Car.create!(
   make: "Volkswagen",
@@ -161,5 +171,5 @@ Car.create!(
   transmission: "Auto",
   user: james
 )
-puts "created #{Car.count} users"
-#users
+
+puts "Created #{Car.count} cars"

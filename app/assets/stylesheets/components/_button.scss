@@ -1,0 +1,29 @@
+.logo {
+  height: 40px;
+}
+
+.search-bar input {
+  max-width: 160px;
+}
+
+.top-buttons {
+  gap: 0.5rem;
+}
+
+.btn-outline-dark {
+  padding: 8px 16px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  font-weight: 500;
+  color: #333;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #333;
+    color: #fff;
+  }
+}
