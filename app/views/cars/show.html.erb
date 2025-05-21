@@ -1,3 +1,10 @@
+<div class="navbar">
+  <%= image_tag "logo.png" %>
+  <div>
+    <%= link_to "Home", cars_path %>
+    <%= link_to "My Bookings", bookings_path %>
+  </div>
+</div>
 
 <div class="car-header">
   <h1><%= @car.make %> <%= @car.model %> | <%= @car.year %></h1>
@@ -11,6 +18,5 @@
 
 <div class="car-actions">
   <%= link_to "Share", "#", class: "btn-share" %>
-  <%# <%= link_to "Save", save_car_path(@car), method: :post, class: "btn-save" %> %>
-  <%= link_to "Book Now", new_car_booking_path(@car), class: "btn-book" %>
+
 </div>
