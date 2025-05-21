@@ -78,16 +78,15 @@ Car.create!(
   make: "BMW",
   model: "X5",
   year: 2015,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Auto",
   user: bob
-  image_url: "bmw car.jpg"
 )
 Car.create!(
   make: "Volkswagen",
   model: "Beetle",
   year: 2010,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Manual",
   user: alice
 )
@@ -95,7 +94,7 @@ Car.create!(
   make: "Mercedes",
   model: "G-wagon",
   year: 2020,
-  fuel: "Electric",
+  fuel_type: "Electric",
   transmission: "Auto",
   user: chris
 )
@@ -103,7 +102,7 @@ Car.create!(
   make: "BMW",
   model: "3 Series",
   year: 2017,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Auto",
   user: steve
 )
@@ -111,7 +110,7 @@ Car.create!(
   make: "Volkswagen",
   model: "Golf",
   year: 2019,
-  fuel: "Hybrid",
+  fuel_type: "Hybrid",
   transmission: "Manual",
   user: andy
 )
@@ -119,7 +118,7 @@ Car.create!(
   make: "Mercedes",
   model: "A-Class",
   year: 2020,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Auto",
   user: harry
 )
@@ -127,7 +126,7 @@ Car.create!(
   make: "BMW",
   model: "M4",
   year: 2019,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Auto",
   user: alex
 )
@@ -135,7 +134,7 @@ Car.create!(
   make: "Volkswagen",
   model: "Touraeg",
   year: 2022,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Auto",
   user: tony
 )
@@ -143,7 +142,7 @@ Car.create!(
   make: "Mercedes",
   model: "C-class",
   year: 2023,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Auto",
   user: laura
 )
@@ -151,7 +150,7 @@ Car.create!(
   make: "Citreon",
   model: "C4",
   year: 2015,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Manual",
   user: beth
 )
@@ -159,7 +158,7 @@ Car.create!(
   make: "Peugeot",
   model: "208",
   year: 2018,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Auto",
   user: mo
 )
@@ -167,7 +166,7 @@ Car.create!(
   make: "Audi",
   model: "A4",
   year: 2020,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Auto",
   user: james
 )

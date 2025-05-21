@@ -75,7 +75,7 @@
             <%= image_tag("bmw_car.jpg", alt: "#{car.make} image") %>
           </div>
           <div class="card-bottom">
-            Year: <%= car.year %>, Fuel: <%= car.fuel %>, Transmission: <%= car.transmission %>
+            Year: <%= car.year %>, Fuel: <%= car.fuel_type %>, Transmission: <%= car.transmission %>
           </div>
         </div>
       <% end %>
@@ -94,10 +94,3 @@
     document.getElementById("selected-time").value = time;
   }
 </script>
-
-
-
-
-
-
-
