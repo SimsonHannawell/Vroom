@@ -1,3 +1,28 @@
+// homepage/cards
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  }
+}
+
+.card-top h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+
+  // cars.index
 
 .card-link-wrapper {
   text-decoration: none;
@@ -38,6 +63,17 @@
 
 .card-image img {
   width: 100%;
+// home/cards
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.card-bottom {
+  font-size: 0.9rem;
+  color: #555;
+// cars.index
   height: 200px;
   object-fit: cover;
 }
