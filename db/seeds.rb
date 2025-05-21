@@ -32,42 +32,34 @@ chris = User.create!(
   email: "chris@gmail.com",
   password: "password789"
 )
-
 steve = User.create!(
   email: "steve@gmail.com",
   password: "password123"
 )
-
 andy = User.create!(
   email: "andy@gmail.com",
   password: "password456"
 )
-
 harry = User.create!(
   email: "harry@gmail.com",
   password: "password789"
 )
-
 alex = User.create!(
   email: "alex@gmail.com",
   password: "password123"
 )
-
 tony = User.create!(
   email: "tony@gmail.com",
   password: "password456"
 )
-
 laura = User.create!(
   email: "laura@gmail.com",
   password: "password789"
 )
-
 beth = User.create!(
   email: "beth@gmail.com",
   password: "password123"
 )
-
 mo = User.create!(
   email: "mo@gmail.com",
   password: "password456"
@@ -115,7 +107,6 @@ Car.create!(
   transmission: "Auto",
   user: steve
 )
-
 Car.create!(
   make: "Volkswagen",
   model: "Golf",
@@ -124,7 +115,6 @@ Car.create!(
   transmission: "Manual",
   user: andy
 )
-
 Car.create!(
   make: "Mercedes",
   model: "A-Class",
@@ -141,7 +131,6 @@ Car.create!(
   transmission: "Auto",
   user: alex
 )
-
 Car.create!(
   make: "Volkswagen",
   model: "Touraeg",
@@ -150,7 +139,6 @@ Car.create!(
   transmission: "Auto",
   user: tony
 )
-
 Car.create!(
   make: "Mercedes",
   model: "C-class",
@@ -167,7 +155,6 @@ Car.create!(
   transmission: "Manual",
   user: beth
 )
-
 Car.create!(
   make: "Peugeot",
   model: "208",
@@ -176,7 +163,6 @@ Car.create!(
   transmission: "Auto",
   user: mo
 )
-
 Car.create!(
   make: "Audi",
   model: "A4",
@@ -187,4 +173,3 @@ Car.create!(
 )
 
 puts "Created #{Car.count} cars"
-
