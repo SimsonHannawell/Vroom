@@ -1,0 +1,32 @@
+<div class="navbar">
+  <%= image_tag 'logo.png' %>
+  <div>
+    <%= link_to 'Home', cars_path %>
+    <%# <%= link_to 'My Bookings', bookings_path %> %>
+  </div>
+</div>
+
+<div class="container w-75 p-3">
+  <h1>Welcome to Vroom</h1>
+
+  <!-- Grid Container -->
+  <div class="card-grid">
+    <% @cars.each do |car| %>
+      <%= link_to car_path(car), class: "card-link-wrapper" do %>
+        <div class="card">
+          <div class="card-top">
+            <h2><strong><%= "#{car.make} #{car.model}" %></strong></h2>
+          </div>
+
+          <div class="card-image">
+            <%= image_tag "pagani.jpg", alt: "#{car.make} image" %>
+          </div>
+
+          <div class="card-bottom">
+            Year: <%= car.year %>, Fuel: <%= car.fuel %>, Transmission: <%= car.transmission %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
