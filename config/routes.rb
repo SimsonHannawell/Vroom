@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  authenticated :user do
+    root to: "pages#home", as: :authenticated_root
+  end
+
+  unauthenticated do
+    root to: "pages#home", as: :unauthenticated_root
+  end
 
   get '/my_bookings', to: 'bookings#my_bookings'
 
@@ -11,12 +17,13 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  # All other actions (index, show, edit, update, destroy)
   resources :bookings, except: [:new, :create] do
     resources :reviews, only: [:new, :create]
+
+    member do
+      get :confirm
+      post :accept
+      post :decline
+    end
   end
-
-  post "/bookings/:id/accept", to: "bookings#accept", as: :accept_booking
-  post "/bookings/:id/decline", to: "bookings#decline", as: :decline_booking
 end
-

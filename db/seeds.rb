@@ -172,3 +172,46 @@ Car.create!(
 )
 
 puts "Created #{Car.count} cars"
+
+puts "Creating new bookings..."
+
+Booking.create!(
+  start_date: DateTime.now,
+  end_date: DateTime.now + 1.day,
+  car: Car.first,
+  user: User.first
+)
+Booking.create!(
+  start_date: DateTime.now + 1.day,
+  end_date: DateTime.now + 2.days,
+  car: Car.second,
+  user: User.second
+)
+Booking.create!(
+  start_date: DateTime.now + 2.days,
+  end_date: DateTime.now + 3.days,
+  car: Car.third,
+  user: User.third
+)
+Booking.create!(
+  start_date: DateTime.now + 3.days,
+  end_date: DateTime.now + 4.days,
+  car: Car.fourth,
+  user: User.fourth
+)
+Booking.create!(
+  start_date: DateTime.now + 4.days,
+  end_date: DateTime.now + 5.days,
+  car: Car.fifth,
+  user: User.fifth
+)
+
+Booking.create!(
+  start_date: DateTime.now,
+  end_date: DateTime.now + 1.day,
+  car: Car.sixth,
+  user: bob
+)
+
+puts "Created #{Booking.count} bookings"
+puts "Seeding completed!"

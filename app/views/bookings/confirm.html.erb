@@ -8,9 +8,9 @@
         <%= link_to "← Back", "#", class: "back-link" %>
       </div>
 
-          <%= link_to root_path do %>
-      <%= image_tag "vroom logo.jpg", class: "logo" %>
-          <% end %>
+   <%= link_to (user_signed_in? ? authenticated_root_path : unauthenticated_root_path) do %>
+  <%= image_tag "vroom logo.jpg", class: "logo" %>
+    <% end %>
 
       <h1>Confirm and pay</h1>
 
