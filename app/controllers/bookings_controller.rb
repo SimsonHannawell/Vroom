@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @incoming_bookings = current_user.bookings.incoming
     @pending_bookings = current_user.bookings.pending
@@ -8,6 +8,13 @@ class BookingsController < ApplicationController
 
   def confirm
     @booking = Booking.find(params[:id])
+    @car = @booking.car
+
+    days = (@booking.end_date - @booking.start_date).to_i
+    @rental_price = @car.price_per_day * days
+    @cleaning_fee = 25.00
+    @service_fee = (@rental_price * 0.2).round(2) # example 20% fee
+    @total_price = (@rental_price + @cleaning_fee + @service_fee).round(2)
   end
 
   def create

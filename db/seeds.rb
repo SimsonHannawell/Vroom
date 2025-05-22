@@ -218,6 +218,14 @@ Car.create!(
   price_per_day: 55.0
 )
 
+Car.update_all(latitude: nil, longitude: nil) # optional reset
+
+Car.all.each do |car|
+  car.latitude = 51.5 + rand * 0.1
+  car.longitude = -0.15 + rand * 0.1
+  car.save!
+end
+
 puts "Created #{Car.count} cars"
 
 puts "Creating new bookings..."

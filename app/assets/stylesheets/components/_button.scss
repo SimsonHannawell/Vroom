@@ -8,6 +8,26 @@
 
 .top-buttons {
   gap: 0.5rem;
+
+  // Make dropdown toggle buttons look like .btn-outline-dark buttons
+  .btn.dropdown-toggle {
+    padding: 8px 16px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #333;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover,
+    &:focus {
+      background-color: #333;
+      color: #fff;
+    }
+  }
 }
 
 .btn-outline-dark {
@@ -27,3 +47,17 @@
     color: #fff;
   }
 }
+
+.btn.make-money-btn {
+  background-color: #2fac2f;      // Light green background
+  color: #000;                    // Dark text for readability
+  border: 1px solid #90ee90;      // Match border color
+
+  &:hover {
+    background-color: #198754 !important;  // Darker green hover
+    color: white !important;
+    border-color: #198754 !important;
+  }
+}
+
+

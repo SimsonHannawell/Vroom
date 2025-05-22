@@ -1,6 +1,15 @@
 class CarsController < ApplicationController
   def index
     @cars = Car.all
+    @cars_json = @cars.map do |car|
+      {
+        id: car.id,
+        name: "#{car.make} #{car.model}",
+        price: car.price_per_day,
+        latitude: car.latitude,
+        longitude: car.longitude
+      }
+    end.to_json
   end
 
   def show
@@ -47,4 +56,3 @@ class CarsController < ApplicationController
     params.require(:car).permit(:make, :model, :year, :fuel_type, :transmission, :color, :price_per_day, :description)
   end
 end
-

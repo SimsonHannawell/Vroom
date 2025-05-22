@@ -1,26 +1,41 @@
 <%= render "shared/navbar" %>
 
-<div class="container w-75 p-3">
-  <h3>12 Matches in your area</h3>
-
-  <!-- Grid Container -->
-  <div class="card-grid">
-    <% @cars.each do |car| %>
-      <%= link_to car_path(car), class: "card-link-wrapper" do %>
-        <div class="card">
-          <div class="card-top">
-            <h2><strong><%= "#{car.make} #{car.model}" %></strong></h2>
+<div class="map-page">
+  <!-- Car List -->
+  <div class="car-list">
+    <h3><%= pluralize(@cars.count, "Match") %> in your area</h3>
+    <div class="card-grid">
+      <% @cars.each do |car| %>
+        <%= link_to car_path(car), class: "card-link-wrapper", id: "car-#{car.id}" do %>
+          <div class="card">
+            <div class="card-top">
+              <h2><strong><%= "#{car.make} #{car.model}" %></strong></h2>
+            </div>
+            <div class="card-image">
+              <%= image_tag "pagani.jpg", alt: "#{car.make} image" %>
+            </div>
+            <div class="card-bottom">
+              <p><strong>£<%= car.price_per_day %></strong> per day</p>
+              <p><%= truncate(car.description, length: 100) %></p>
+              <p>Year: <%= car.year %>, Fuel: <%= car.fuel_type %>, Transmission: <%= car.transmission %></p>
+            </div>
           </div>
-
-          <div class="card-image">
-            <%= image_tag "pagani.jpg", alt: "#{car.make} image" %>
-          </div>
-
-          <div class="card-bottom">
-            Year: <%= car.year %>, Fuel: <%= car.fuel_type %>, Transmission: <%= car.transmission %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div id="map"
+    class="mapbox"
+    data-controller="map"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-map-cars-value='<%= raw @cars.map { |car| {
+        id: car.id,
+        name: "#{car.make} #{car.model}",
+        price: car.price_per_day,
+        latitude: car.latitude,
+        longitude: car.longitude
+    } }.to_json %>'>
   </div>
 </div>
