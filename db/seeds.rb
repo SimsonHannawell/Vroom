@@ -12,7 +12,7 @@
 #   end
 
 puts "Clearing database..."
-
+Booking.destroy_all
 Car.destroy_all
 User.destroy_all
 
@@ -256,8 +256,8 @@ Booking.create!(
 Booking.create!(
   start_date: DateTime.now,
   end_date: DateTime.now + 1.day,
-  car: Car.sixth,
-  user: User.sixth
+  car: Car.last,
+  user: User.last
 )
 
 puts "Created #{Booking.count} bookings"

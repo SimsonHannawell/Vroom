@@ -1,17 +1,5 @@
 <%= render "shared/navbar" %>
 
-  <div class="top-buttons d-flex gap-2">
-    <%= link_to "Manage Booking", bookings_path, class: "btn btn-outline-dark" %>
-    <%= link_to "Make money $", bookings_path, class: "btn btn-outline-dark" %>
-    <% if user_signed_in? %>
-  Logged in as <%= current_user.email %> |
-  <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to log out?" }, class: "btn btn-outline-dark" %>
-  <% else %>
-  <%= link_to 'Sign in', new_user_session_path, class: "btn btn-outline-dark" %> |
-  <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-outline-dark" %>
-<% end %>
-  </div>
-</div>
 
 
 <div class="car-header">
@@ -34,11 +22,10 @@
   <p><strong>Transmission:</strong> <%= @car.transmission %></p>
   <p><strong>Fuel Type:</strong> <%= @car.fuel_type %></p>
   <p><strong>Year:</strong> <%= @car.year %></p>
+  <p><strong>Description:</strong> <%= @car.description %></p>
 </div>
 
 <div class="car-actions">
   <%= link_to "Share", "#", class: "btn-share" %>
-  <%= link_to "Home", "#", class: "btn-share" %>
-  <%= link_to "Back", "#", class: "btn-share" %>
-<%= link_to "Book Now", confirm_booking_path, class: "btn-share" %>
+  <%= link_to "Book Now", confirm_booking_path, class: "btn-share" %>
 </div>
