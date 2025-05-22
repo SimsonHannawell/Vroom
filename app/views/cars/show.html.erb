@@ -21,11 +21,10 @@
   <p><strong>Transmission:</strong> <%= @car.transmission %></p>
   <p><strong>Fuel Type:</strong> <%= @car.fuel_type %></p>
   <p><strong>Year:</strong> <%= @car.year %></p>
+  <p><strong>Description:</strong> <%= @car.description %></p>
 </div>
 
 <div class="car-actions">
   <%= link_to "Share", "#", class: "btn-share" %>
-  <%= link_to "Home", "#", class: "btn-share" %>
-  <%= link_to "Back", "#", class: "btn-share" %>
-<%= link_to "Book Now", confirm_booking_path, class: "btn-share" %>
+  <%= link_to "Book Now", confirm_booking_path, class: "btn-share" %>
 </div>
