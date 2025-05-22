@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     root to: "pages#home", as: :unauthenticated_root
   end
 
+   # This ensures `root_path` helper is defined
+  root to: "pages#home"
+
   get '/my_bookings', to: 'bookings#my_bookings'
 
   get "up" => "rails/health#show", as: :rails_health_check
