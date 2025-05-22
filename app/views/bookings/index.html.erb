@@ -1,0 +1,54 @@
+<%= render "shared/navbar" %>
+
+<h1>My Bookings</h1>
+
+<!-- Incoming Bookings -->
+<section>
+  <h2>Incoming Bookings</h2>
+  <% if @incoming_bookings.any? %>
+    <div class="booking-grid">
+      <% @incoming_bookings.each do |booking| %>
+        <div class="booking-card">
+          <div class="booking-image">
+            <%= image_tag(booking.car.image_url || "placeholder-car.jpg", alt: booking.car.model, class: "car-img") %>
+          </div>
+          <div class="booking-info">
+            <p><strong>User:</strong> <%= booking.user.email %></p>
+            <p><strong>Car:</strong> <%= booking.car.make %> <%= booking.car.model %></p>
+            <p><strong>Dates:</strong> <%= booking.start_date.strftime("%d %b %Y") %> - <%= booking.end_date.strftime("%d %b %Y") %></p>
+            <p><strong>Price:</strong> $<%= booking.total_price %></p>
+          </div>
+          <div class="booking-actions">
+            <%= button_to "Accept", accept_booking_path(booking), method: :post, class: "btn btn-success" %>
+            <%= button_to "Decline", decline_booking_path(booking), method: :post, class: "btn btn-danger" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No incoming bookings.</p>
+  <% end %>
+</section>
+
+<!-- Pending Bookings -->
+<section>
+  <h2>Pending Bookings</h2>
+  <% if @pending_bookings.any? %>
+    <div class="booking-grid">
+      <% @pending_bookings.each do |booking| %>
+        <div class="booking-card">
+          <div class="booking-image">
+            <%= image_tag(booking.car.image_url || "placeholder-car.jpg", alt: booking.car.model, class: "car-img") %>
+          </div>
+          <div class="booking-info">
+            <p><strong>Car:</strong> <%= booking.car.make %> <%= booking.car.model %></p>
+            <p><strong>Dates:</strong> <%= booking.start_date.strftime("%d %b %Y") %> - <%= booking.end_date.strftime("%d %b %Y") %></p>
+            <p><strong>Status:</strong> Pending</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No pending bookings.</p>
+  <% end %>
+</section>

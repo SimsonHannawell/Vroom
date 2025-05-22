@@ -1,13 +1,7 @@
-<div class="navbar">
-  <%= image_tag 'logo.png' %>
-  <div>
-    <%= link_to 'Home', cars_path %>
-    <%# <%= link_to 'My Bookings', bookings_path %> %>
-  </div>
-</div>
+<%= render "shared/navbar" %>
 
 <div class="container w-75 p-3">
-  <h1>Welcome to Vroom</h1>
+  <h3>12 Matches in your area</h3>
 
   <!-- Grid Container -->
   <div class="card-grid">
@@ -23,7 +17,7 @@
           </div>
 
           <div class="card-bottom">
-            Year: <%= car.year %>, Fuel: <%= car.fuel %>, Transmission: <%= car.transmission %>
+            Year: <%= car.year %>, Fuel: <%= car.fuel_type %>, Transmission: <%= car.transmission %>
           </div>
         </div>
       <% end %>

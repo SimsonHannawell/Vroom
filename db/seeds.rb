@@ -78,7 +78,7 @@ Car.create!(
   make: "BMW",
   model: "X5",
   year: 2015,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Auto",
   user: bob
 )
@@ -86,7 +86,7 @@ Car.create!(
   make: "Volkswagen",
   model: "Beetle",
   year: 2010,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Manual",
   user: alice
 )
@@ -94,7 +94,7 @@ Car.create!(
   make: "Mercedes",
   model: "G-wagon",
   year: 2020,
-  fuel: "Electric",
+  fuel_type: "Electric",
   transmission: "Auto",
   user: chris
 )
@@ -102,7 +102,7 @@ Car.create!(
   make: "BMW",
   model: "3 Series",
   year: 2017,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Auto",
   user: steve
 )
@@ -110,7 +110,7 @@ Car.create!(
   make: "Volkswagen",
   model: "Golf",
   year: 2019,
-  fuel: "Hybrid",
+  fuel_type: "Hybrid",
   transmission: "Manual",
   user: andy
 )
@@ -118,7 +118,7 @@ Car.create!(
   make: "Mercedes",
   model: "A-Class",
   year: 2020,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Auto",
   user: harry
 )
@@ -126,7 +126,7 @@ Car.create!(
   make: "BMW",
   model: "M4",
   year: 2019,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Auto",
   user: alex
 )
@@ -134,7 +134,7 @@ Car.create!(
   make: "Volkswagen",
   model: "Touraeg",
   year: 2022,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Auto",
   user: tony
 )
@@ -142,7 +142,7 @@ Car.create!(
   make: "Mercedes",
   model: "C-class",
   year: 2023,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Auto",
   user: laura
 )
@@ -150,7 +150,7 @@ Car.create!(
   make: "Citreon",
   model: "C4",
   year: 2015,
-  fuel: "Diesel",
+  fuel_type: "Diesel",
   transmission: "Manual",
   user: beth
 )
@@ -158,7 +158,7 @@ Car.create!(
   make: "Peugeot",
   model: "208",
   year: 2018,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Auto",
   user: mo
 )
@@ -166,9 +166,52 @@ Car.create!(
   make: "Audi",
   model: "A4",
   year: 2020,
-  fuel: "Petrol",
+  fuel_type: "Petrol",
   transmission: "Auto",
   user: james
 )
 
 puts "Created #{Car.count} cars"
+
+puts "Creating new bookings..."
+
+Booking.create!(
+  start_date: DateTime.now,
+  end_date: DateTime.now + 1.day,
+  car: Car.first,
+  user: User.first
+)
+Booking.create!(
+  start_date: DateTime.now + 1.day,
+  end_date: DateTime.now + 2.days,
+  car: Car.second,
+  user: User.second
+)
+Booking.create!(
+  start_date: DateTime.now + 2.days,
+  end_date: DateTime.now + 3.days,
+  car: Car.third,
+  user: User.third
+)
+Booking.create!(
+  start_date: DateTime.now + 3.days,
+  end_date: DateTime.now + 4.days,
+  car: Car.fourth,
+  user: User.fourth
+)
+Booking.create!(
+  start_date: DateTime.now + 4.days,
+  end_date: DateTime.now + 5.days,
+  car: Car.fifth,
+  user: User.fifth
+)
+
+Booking.create!(
+  start_date: DateTime.now,
+  end_date: DateTime.now + 1.day,
+  car: Car.sixth,
+  user: bob
+)
+
+puts "Created #{Booking.count} bookings"
+puts "Seeding completed!"

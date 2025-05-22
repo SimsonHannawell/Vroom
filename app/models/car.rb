@@ -8,6 +8,6 @@ class Car < ApplicationRecord
   validates :make, presence: true
   validates :model, presence: true
   validates :transmission, inclusion: { in: ['Manual', 'Auto']}
-  validates :fuel, inclusion: {in: ['Electric', 'Hybrid', 'Petrol', 'Diesel']}
+  validates :fuel_type, inclusion: {in: ['Electric', 'Hybrid', 'Petrol', 'Diesel']}
   validates :year, presence: true
 end
