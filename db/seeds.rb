@@ -81,7 +81,6 @@ Car.create!(
   fuel: "Diesel",
   transmission: "Auto",
   user: bob
-  image_url: "bmw car.jpg"
 )
 Car.create!(
   make: "Volkswagen",
