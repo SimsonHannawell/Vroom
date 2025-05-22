@@ -9,3 +9,5 @@ pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "flatpickr" # @4.6.13
 pin "flatpickr/dist/themes/material_blue.css", to: "flatpickr--dist--themes--material_blue.css.js" # @4.6.13
+pin "mapbox-gl", to: "https://cdn.skypack.dev/mapbox-gl"
+
