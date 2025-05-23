@@ -1,39 +1,64 @@
 <%= render "shared/navbar" %>
 
-<div class="car-show-page" style="display: flex; gap: 2rem; align-items: flex-start;">
-  <!-- Left: Gallery -->
-  <div class="gallery" style="flex: 2;">
-    <h1><%= @car.make %> <%= @car.model %> | <%= @car.year %></h1>
+<div class="container mt-4">
+  <div class="row">
+    <!-- Main gallery column: col-md-9 = 75% -->
+    <div class="col-md-9">
+      <div class="car-gallery" data-controller="gallery">
+        <h1><%= @car.make %> <%= @car.model %> | <%= @car.year %></h1>
 
-    <% if @car.images.attached? %>
-      <div class="main-image">
-        <%= image_tag @car.images.first.variant(resize_to_limit: [800, 600]) %>
+        <div class="main-image mb-3">
+          <% if @car.images.attached? %>
+            <%= cl_image_tag @car.images.first.key, crop: :fill, width: 800, height: 500, class: "main-img", data: { gallery_target: "main" } %>
+          <% else %>
+            <%= image_tag("bmw_car.jpg", class: "main-img", data: { gallery_target: "main" }) %>
+          <% end %>
+        </div>
+
+        <div class="thumbnail-grid mb-4">
+          <% if @car.images.attached? %>
+            <% @car.images.each do |image| %>
+              <%= cl_image_tag image.key,
+                crop: :fill,
+                width: 120,
+                height: 80,
+                class: "thumbnail",
+                data: {
+                  action: "click->gallery#changeMain",
+                  gallery_target: "thumb",
+                  full: cl_image_path(image.key, crop: :fill, width: 800, height: 500)
+                } %>
+            <% end %>
+          <% else %>
+            <%= image_tag("bmw_car.jpg", width: 120, height: 80, class: "thumbnail", data: { action: "click->gallery#changeMain", gallery_target: "thumb" }) %>
+          <% end %>
+        </div>
+
+        <div class="car-details">
+          <p><strong>Transmission:</strong> <%= @car.transmission %></p>
+          <p><strong>Fuel Type:</strong> <%= @car.fuel_type %></p>
+          <p><strong>Description:</strong> <%= @car.description %></p>
+        </div>
       </div>
-      <div class="thumbnail-grid">
-        <% @car.images.each do |image| %>
-          <%= image_tag image.variant(resize_to_limit: [150, 150]), class: "thumbnail" %>
-        <% end %>
+    </div>
+
+    <!-- Booking sidebar: col-md-3 = 25% -->
+    <div class="col-md-3 mt-5">
+      <div class="booking-sidebar">
+        <div class="card p-3 shadow-sm">
+          <h2><%= number_to_currency(@car.price_per_day, unit: "£") %> / day</h2>
+
+          <%= simple_form_for [@car, @booking], html: { data: { controller: "datepicker", price_per_day: @car.price_per_day } } do |f| %>
+            <input type="text" class="form-control mb-3" placeholder="Select date range" data-datepicker-target="rangeInput">
+            <%= f.hidden_field :start_date, data: { datepicker_target: "startField" } %>
+            <%= f.hidden_field :end_date, data: { datepicker_target: "endField" } %>
+
+            <p>Total Price: <span id="total-price">£0</span></p>
+            <%= f.submit "Book Now", class: "btn btn-primary w-100" %>
+          <% end %>
+
+        </div>
       </div>
-    <% end %>
-
-    <p><strong>Transmission:</strong> <%= @car.transmission %></p>
-    <p><strong>Fuel Type:</strong> <%= @car.fuel_type %></p>
-    <p><strong>Description:</strong> <%= @car.description %></p>
-  </div>
-
-  <!-- Right: Booking Card -->
-  <div class="card" style="flex: 1;">
-    <h2><%= number_to_currency(@car.price_per_day) %> / day</h2>
-
-    <%= simple_form_for [@car, @booking] do |f| %>
-      <%= f.input :start_date, as: :string, input_html: { class: "date-picker", placeholder: "Start Date" } %>
-      <%= f.input :end_date, as: :string, input_html: { class: "date-picker", placeholder: "End Date" } %>
-
-      <%= f.hidden_field :car_id, value: @car.id %>
-
-      <p>Total Price: <span id="total-price">£0</span></p>
-
-      <%= f.submit "Book Now", class: "btn btn-primary" %>
-    <% end %>
+    </div>
   </div>
 </div>
