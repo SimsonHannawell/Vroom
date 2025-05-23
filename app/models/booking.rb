@@ -5,8 +5,10 @@ class Booking < ApplicationRecord
   validates :end_date, presence: true
 
   # A booking that has been accepted
-  scope :incoming, -> { where(accepted?: true) }
+  scope :confirmed, -> { where(accepted?: true) }
 
   # A booking that is still pending (not yet accepted)
   scope :pending, -> { where(accepted?: false) }
 end
+
+

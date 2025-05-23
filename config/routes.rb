@@ -11,13 +11,13 @@ Rails.application.routes.draw do
    # This ensures `root_path` helper is defined
   root to: "pages#home"
 
-  get '/my_bookings', to: 'bookings#my_bookings'
-
   get "up" => "rails/health#show", as: :rails_health_check
+
+  get '/my_bookings', to: 'bookings#index', as: 'my_bookings'
 
   # Nest bookings under cars for only :new and :create
   resources :cars do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :index]
   end
 
   resources :bookings, except: [:new, :create] do

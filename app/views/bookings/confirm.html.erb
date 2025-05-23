@@ -5,18 +5,18 @@
   <% end %>
 </div>
 
-
 <!-- app/views/bookings/confirm.html.erb -->
 <div class="booking-page">
+  <!-- Flex container for left and right sections -->
   <div class="booking-content">
+    
     <!-- Left Section -->
     <div class="booking-details">
-
       <h1>Confirm and pay</h1>
 
       <div class="highlight-box">
         <strong>This is a rare find.</strong>
-        <p> <%= @booking.car.user.name  %> car is usually booked.</p>
+        <p><%= @booking.car.user.name %> car is usually booked.</p>
       </div>
 
       <div class="section">
@@ -24,7 +24,7 @@
         <div class="info-row">
           <div>
             <p class="label">Dates</p>
-            <p><%= @booking.start_date%> - <%= @booking.end_date%> </p>
+            <p><%= @booking.start_date %> - <%= @booking.end_date %></p>
           </div>
         </div>
       </div>
@@ -34,19 +34,24 @@
         <div class="payment-option selected">
           <input type="radio" checked>
           <div>
-            <p><%= @booking.car.price_per_day%></p>
+            <p><%= @booking.car.price_per_day %></p>
           </div>
         </div>
 
-        <!-- Continue button moved here -->
-        <button class="continue-button">Continue</button>
+        <%= form_with url: bookings_path, method: :post do |f| %>
+          <%= hidden_field_tag :car_id, @car.id %>
+          <%= hidden_field_tag :start_date, @start_date %>
+          <%= hidden_field_tag :end_date, @end_date %>
+          <%= hidden_field_tag :price, @price %>
+          <%= f.submit "Continue", class: "btn btn-primary w-full" %>
+        <% end %>
       </div>
     </div>
 
     <!-- Right Section -->
     <div class="car-summary">
       <div class="car-image">
-        <%= image_tag "car.jpg", alt: "Car photo" %>
+        <%= image_tag "car.jpg", alt: "Car photo", style: "width: 100%; border-radius: 8px;" %>
       </div>
       <div class="car-info">
         <h3>Tesla Model 3</h3>
@@ -73,5 +78,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </div>
+

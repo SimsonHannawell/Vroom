@@ -2,8 +2,9 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @incoming_bookings = current_user.bookings.incoming
+    @confirmed_bookings = current_user.bookings.confirmed
     @pending_bookings = current_user.bookings.pending
+    
   end
 
   def confirm
@@ -17,19 +18,18 @@ class BookingsController < ApplicationController
     @total_price = (@rental_price + @cleaning_fee + @service_fee).round(2)
   end
 
- def create
-  @car = Car.find(params[:car_id])
-  @booking = Booking.new(booking_params)
-  @booking.car = @car
-  @booking.user = current_user # if you're tracking user bookings
-
+  def create
+    @car = Car.find(params[:car_id])
+    @booking = Booking.new(booking_params)
+    @booking.car = @car
+    @booking.user = current_user
+    
     if @booking.save
-      redirect_to confirm_booking_path(@booking)
+      redirect_to my_bookings_path, notice: "Booking confirmed!"
     else
-      redirect_back fallback_location: car_path(@car), alert: "Booking failed"
+      render :new, alert: "Something went wrong."
     end
   end
-
 
   def destroy
     @booking = Booking.find(params[:id])
@@ -37,11 +37,10 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, notice: "Booking deleted"
   end
 
-
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:car_id, :start_date, :end_date, :total_price)
   end
-
 end
+
