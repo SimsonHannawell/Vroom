@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_23_101500) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.boolean "accepted?"
+    t.boolean "accepted?", default: false
     t.bigint "user_id", null: false
     t.bigint "car_id", null: false
     t.datetime "created_at", null: false
