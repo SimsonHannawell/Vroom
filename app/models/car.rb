@@ -3,7 +3,7 @@ class Car < ApplicationRecord
   has_many :bookings
   has_many :reviews
 
-
+  has_many_attached :images
 
   validates :make, presence: true
   validates :model, presence: true
