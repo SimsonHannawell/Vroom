@@ -22,7 +22,11 @@ class CarsController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
     @car = current_user.cars.build(car_params)
+=======
+    @car = Car.new(car_params)
+>>>>>>> b68c9db21c16e79bf3b9a90ef9e515bc2b7d23f4
     if @car.save
       redirect_to @car, notice: 'Car listed successfully.'
     else
