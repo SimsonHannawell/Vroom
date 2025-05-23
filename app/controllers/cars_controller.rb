@@ -22,14 +22,14 @@ class CarsController < ApplicationController
   end
 
   def create
-
-    @car = Car.new(car_params)
+    @car = current_user.cars.build(car_params)
     if @car.save
       redirect_to @car, notice: 'Car listed successfully.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
+
 
   def edit
     @car = Car.find(params[:id])
