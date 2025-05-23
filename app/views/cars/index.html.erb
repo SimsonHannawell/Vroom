@@ -12,7 +12,11 @@
               <h2><strong><%= "#{car.make} #{car.model}" %></strong></h2>
             </div>
             <div class="card-image">
-              <%= image_tag "pagani.jpg", alt: "#{car.make} image" %>
+              <% if car.images.attached? %>
+              <%= cl_image_tag car.images.first.key, height: 300, width: 400, crop: :fill %>
+              <% else %>
+              <%= image_tag("bmw_car.jpg", alt: "#{car.make} image") %>
+              <% end %>
             </div>
             <div class="card-bottom">
               <p><strong>£<%= car.price_per_day %></strong> per day</p>

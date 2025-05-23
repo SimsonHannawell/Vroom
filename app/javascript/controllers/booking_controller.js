@@ -1,23 +1,25 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const startInput = document.querySelector("#booking_start_date");
-  const endInput = document.querySelector("#booking_end_date");
-  const pricePerDay = parseFloat("<%= @car.price_per_day %>");
-  const totalPriceEl = document.getElementById("total-price");
+import { Controller } from "@hotwired/stimulus"
 
-  function updateTotal() {
-    if (startInput.value && endInput.value) {
-      const startDate = new Date(startInput.value);
-      const endDate = new Date(endInput.value);
-      const days = (endDate - startDate) / (1000 * 60 * 60 * 24);
-      if (days > 0) {
-        const total = days * pricePerDay;
-        totalPriceEl.textContent = `£${total.toFixed(2)}`;
-      } else {
-        totalPriceEl.textContent = "£0";
-      }
-    }
+export default class extends Controller {
+  static targets = ["start", "end", "total"]
+  static values = {
+    price: Number
   }
 
-  startInput.addEventListener("change", updateTotal);
-  endInput.addEventListener("change", updateTotal);
-});
+  connect() {
+    this.updateTotal()
+  }
+
+  updateTotal() {
+    const start = new Date(this.startTarget.value)
+    const end = new Date(this.endTarget.value)
+
+    if (!isNaN(start) && !isNaN(end) && end > start) {
+      const days = (end - start) / (1000 * 60 * 60 * 24)
+      const total = days * this.priceValue
+      this.totalTarget.textContent = `£${total.toFixed(2)}`
+    } else {
+      this.totalTarget.textContent = "£0"
+    }
+  }
+}
