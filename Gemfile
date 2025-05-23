@@ -10,6 +10,7 @@ gem 'faker'
 gem "geocoder"
 gem 'dotenv-rails', groups: [:development, :test]
 gem "cloudinary"
+gem "activestorage-cloudinary-service"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

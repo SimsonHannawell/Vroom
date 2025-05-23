@@ -17,18 +17,19 @@ class BookingsController < ApplicationController
     @total_price = (@rental_price + @cleaning_fee + @service_fee).round(2)
   end
 
-  def create
-    @car = Car.find(params[:car_id])
-    @booking = Booking.new(booking_params)
-    @booking.user = current_user
-    @booking.car = @car
+ def create
+  @car = Car.find(params[:car_id])
+  @booking = Booking.new(booking_params)
+  @booking.car = @car
+  @booking.user = current_user # if you're tracking user bookings
 
     if @booking.save
-      redirect_to booking_path(@booking), notice: "Booking created!"
+      redirect_to confirm_booking_path(@booking)
     else
-      render :new, status: :unprocessable_entity
+      redirect_back fallback_location: car_path(@car), alert: "Booking failed"
     end
   end
+
 
   def destroy
     @booking = Booking.find(params[:id])
@@ -36,9 +37,11 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, notice: "Booking deleted"
   end
 
+
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :time)
+    params.require(:booking).permit(:start_date, :end_date)
   end
+
 end
