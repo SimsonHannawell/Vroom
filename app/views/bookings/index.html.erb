@@ -1,70 +1,77 @@
 <%= render "shared/navbar" %>
-<div class="container mx-auto px-4 py-8">
-  <h1 class="text-3xl font-bold mb-8 text-center">My Bookings</h1>
+
+<div class="container py-5">
+  <h1 class="text-center mb-5">My Bookings</h1>
+
   <!-- Confirmed Bookings Section -->
-  <div class="mb-12">
-    <h2 class="text-2xl font-semibold mb-6 text-center">Confirmed Bookings</h2>
+  <section class="mb-5">
+    <h2 class="text-center mb-4">Confirmed Bookings</h2>
+
     <% if @confirmed_bookings.any? %>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <% @confirmed_bookings.each do |booking| %>
-          <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="h-48">
-            </div>
-            <div class="p-6">
-              <div class="mb-4">
-                <p class="text-sm text-gray-600 mb-1"><strong>User:</strong> <%= booking.user.email %></p>
-                <p class="text-lg font-semibold text-gray-800"><%= booking.car.make %> <%= booking.car.model %></p>
-              </div>
-              <div class="space-y-2 mb-4">
-                <p class="text-sm text-gray-600">
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <% if booking.car.images.attached? %>
+                <%= cl_image_tag booking.car.images.first.key,
+                    crop: :fill, width: 400, height: 200,
+                    class: "card-img-top", alt: "#{booking.car.make} #{booking.car.model}" %>
+              <% else %>
+                <%= image_tag "default_car.jpg", class: "card-img-top", alt: "Car image" %>
+              <% end %>
+
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><%= booking.car.make %> <%= booking.car.model %></h5>
+                <p class="card-text mb-2">
+                  <strong>User:</strong> <%= booking.user.email %>
+                </p>
+                <p class="card-text mb-2">
                   <strong>Dates:</strong> <%= booking.start_date.strftime("%d %b %Y") %> - <%= booking.end_date.strftime("%d %b %Y") %>
                 </p>
-                <p class="text-lg font-bold text-green-600">$<%= booking.total_price %></p>
-              </div>
-              <div class="flex space-x-3">
-                <%= button_to "Accept", accept_booking_path(booking),
-                             method: :post,
-                             class: "flex-1 bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200" %>
-                <%= button_to "Decline", decline_booking_path(booking),
-                             method: :post,
-                             class: "flex-1 bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200" %>
+                <p class="card-text fw-bold text-success mb-3">
+                  £<%= booking.total_price %>
+                </p>
               </div>
             </div>
           </div>
         <% end %>
       </div>
     <% else %>
-      <div class="text-center py-12">
-        <div class="bg-gray-50 rounded-lg p-8 max-w-md mx-auto">
-          <p class="text-gray-500 text-lg">No confirmed bookings yet.</p>
+      <div class="text-center py-5">
+        <div class="bg-light rounded p-4 mx-auto" style="max-width: 400px;">
+          <p class="text-muted mb-0">No confirmed bookings yet.</p>
         </div>
       </div>
     <% end %>
-  </div>
+  </section>
+
   <!-- Pending Bookings Section -->
-  <div class="mb-12">
-    <h2 class="text-2xl font-semibold mb-6 text-center">Pending Bookings</h2>
+  <section>
+    <h2 class="text-center mb-4">Pending Bookings</h2>
+
     <% if @pending_bookings.any? %>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <% @pending_bookings.each do |booking| %>
-          <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="h-48">
-            </div>
-            <div class="p-6">
-              <div class="mb-4">
-                <p class="text-lg font-semibold text-gray-800"><%= booking.car.make %> <%= booking.car.model %></p>
-              </div>
-              <div class="space-y-2 mb-4">
-                <p class="text-sm text-gray-600">
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <% if booking.car.images.attached? %>
+                <%= cl_image_tag booking.car.images.first.key,
+                    crop: :fill, width: 400, height: 200,
+                    class: "card-img-top", alt: "#{booking.car.make} #{booking.car.model}" %>
+              <% else %>
+                <%= image_tag "default_car.jpg", class: "card-img-top", alt: "Car image" %>
+              <% end %>
+
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><%= booking.car.make %> <%= booking.car.model %></h5>
+                <p class="card-text mb-2">
                   <strong>Dates:</strong> <%= booking.start_date.strftime("%d %b %Y") %> - <%= booking.end_date.strftime("%d %b %Y") %>
                 </p>
-                <div class="flex items-center">
-                  <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
-                    <svg class="w-4 h-4 mr-1 booking-icon" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
-                    </svg>
-                    Pending
-                  </span>
+                <span class="badge bg-warning text-dark mb-3 align-self-start">Pending</span>
+
+                <div class="mt-auto d-flex gap-2">
+                  <%= button_to "Approve", accept_booking_path(booking), method: :post, class: "btn btn-success flex-fill" %>
+                  <%= button_to "Deny", decline_booking_path(booking), method: :post, class: "btn btn-danger flex-fill" %>
                 </div>
               </div>
             </div>
@@ -72,13 +79,12 @@
         <% end %>
       </div>
     <% else %>
-      <div class="text-center py-12">
-        <div class="bg-gray-50 rounded-lg p-8 max-w-md mx-auto">
-          <p class="text-gray-500 text-lg">No pending bookings.</p>
+      <div class="text-center py-5">
+        <div class="bg-light rounded p-4 mx-auto" style="max-width: 400px;">
+          <p class="text-muted mb-0">No pending bookings.</p>
         </div>
       </div>
     <% end %>
-  </div>
+  </section>
 </div>
-
 

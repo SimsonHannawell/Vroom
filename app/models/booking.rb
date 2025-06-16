@@ -9,6 +9,13 @@ class Booking < ApplicationRecord
 
   # A booking that is still pending (not yet accepted)
   scope :pending, -> { where(accepted?: false) }
+
+    def total_price
+    return 0 unless start_date && end_date && car
+
+    days = (end_date - start_date).to_i
+    price_per_day = car.price_per_day || 0
+    days * price_per_day
+  end
+  
 end
-
-

@@ -2,9 +2,8 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @confirmed_bookings = current_user.bookings.confirmed
-    @pending_bookings = current_user.bookings.pending
-    
+    @confirmed_bookings = current_user.bookings.where(accepted: true)
+    @pending_bookings = current_user.bookings.where(accepted: false)
   end
 
   def confirm
@@ -23,7 +22,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.car = @car
     @booking.user = current_user
-    
+
     if @booking.save
       redirect_to my_bookings_path, notice: "Booking confirmed!"
     else
@@ -37,10 +36,24 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, notice: "Booking deleted"
   end
 
+  def accept
+    @booking = Booking.find(params[:id])
+    if @booking.update(accepted: true)
+      redirect_to bookings_path, notice: "Booking approved."
+    else
+      redirect_to bookings_path, alert: "Unable to approve booking."
+    end
+  end
+
+  def decline
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path, notice: "Booking declined and removed."
+  end
+
   private
 
   def booking_params
     params.require(:booking).permit(:car_id, :start_date, :end_date, :total_price)
   end
 end
-
